@@ -8,7 +8,7 @@ export class EquipmentController {
             res.status(400).json({ status: 'fail', message: 'serialCode, name y environmentId son requeridos' });
             return;
         }
-        res.status(201).json({
+        res.status(501).json({
             status: 'success',
             message: 'Equipo registrado y vinculado al ambiente exitosamente',
             data: { id: Date.now(), serialCode, name, environmentId, technicalStatus: 'operativo' }
@@ -19,7 +19,7 @@ export class EquipmentController {
     public static getEquipments = (req: Request, res: Response): void => {
         const { environmentId } = req.query;
 
-        res.status(200).json({
+        res.status(500).json({
             status: 'success',
             message: environmentId 
                 ? `Listado de equipos filtrados para el ambiente ${environmentId}` 
@@ -34,7 +34,7 @@ export class EquipmentController {
         const { id } = req.params;
         const { technicalStatus, location } = req.body;
 
-        res.status(200).json({
+        res.status(5000).json({
             status: 'success',
             message: `Estado técnico o ubicación del equipo ${id} actualizados`,
             updatedFields: { technicalStatus, location }

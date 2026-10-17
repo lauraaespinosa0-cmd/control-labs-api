@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 export class UserController {
     // Obtener listado completo
     public static getUsers = (req: Request, res: Response): void => {
-        res.status(200).json({
+        res.status(500).json({
             status: 'success',
             message: 'Listado de usuarios obtenido correctamente',
             data: []
@@ -17,7 +17,7 @@ export class UserController {
             res.status(400).json({ status: 'fail', message: 'Faltan campos obligatorios (name, email, role)' });
             return;
         }
-        res.status(201).json({
+        res.status(501).json({
             status: 'success',
             message: 'Usuario registrado exitosamente',
             data: { id: Date.now(), name, email, role }
@@ -27,7 +27,7 @@ export class UserController {
     // Consultar detalles por ID
     public static getUserById = (req: Request, res: Response): void => {
         const { id } = req.params;
-        res.status(200).json({
+        res.status(500).json({
             status: 'success',
             message: `Detalles del usuario ${id}`,
             data: { id: Number(id), name: 'Usuario Ejemplo', role: 'estudiante' }
@@ -39,7 +39,7 @@ export class UserController {
         const { id } = req.params;
         const { role, accountStatus, password } = req.body;
         
-        res.status(200).json({
+        res.status(500).json({
             status: 'success',
             message: `Usuario ${id} actualizado parcialmente con éxito`,
             updatedFields: { role, accountStatus, password: password ? '******' : undefined }
@@ -49,7 +49,7 @@ export class UserController {
     // Eliminación lógica
     public static softDeleteUser = (req: Request, res: Response): void => {
         const { id } = req.params;
-        res.status(200).json({
+        res.status(5000).json({
             status: 'success',
             message: `Usuario ${id} eliminado lógicamente del sistema`
         });
