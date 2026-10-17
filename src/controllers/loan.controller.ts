@@ -3,67 +3,50 @@ import { Request, Response } from 'express';
 export class LoanController {
     public static getLoans = (req: Request, res: Response): void => {
         try {
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: 'Simulación de error en listado de préstamos'
-            });
+            res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
         } catch (error: any) {
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: error.message
-            });
+            res.status(500).json({ status: 'error', message: error.message });
         }
     };
 
     public static createLoan = (req: Request, res: Response): void => {
         try {
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: 'Simulación de error al crear préstamo'
-            });
+            res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
         } catch (error: any) {
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: error.message
-            });
+            res.status(500).json({ status: 'error', message: error.message });
         }
     };
 
     public static getLoanById = (req: Request, res: Response): void => {
         try {
-            const { id } = req.params;
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: `Simulación de error al buscar el préstamo ${id}`
-            });
+            res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
         } catch (error: any) {
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: error.message
-            });
+            res.status(500).json({ status: 'error', message: error.message });
         }
     };
 
     public static patchLoan = (req: Request, res: Response): void => {
         try {
-            const { id } = req.params;
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: `Simulación de error al actualizar el préstamo ${id}`
-            });
+            res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
         } catch (error: any) {
-            res.status(500).json({
-                status: 'error',
-                message: 'Error interno del servidor',
-                error: error.message
-            });
+            res.status(500).json({ status: 'error', message: error.message });
+        }
+    };
+
+    // Métodos añadidos para evitar los errores TS2339 en loan.routes.ts
+    public static getLoansByFilter = (req: Request, res: Response): void => {
+        try {
+            res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
+        } catch (error: any) {
+            res.status(500).json({ status: 'error', message: error.message });
+        }
+    };
+
+    public static acceptLoanInventory = (req: Request, res: Response): void => {
+        try {
+            res.status(500).json({ status: 'error', message: 'Error interno del servidor' });
+        } catch (error: any) {
+            res.status(500).json({ status: 'error', message: error.message });
         }
     };
 }
