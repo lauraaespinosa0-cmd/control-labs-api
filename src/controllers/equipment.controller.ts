@@ -1,43 +1,69 @@
 import { Request, Response } from 'express';
 
 export class EquipmentController {
-    // Registrar nuevo equipo vinculado a un ambiente
-    public static createEquipment = (req: Request, res: Response): void => {
-        const { serialCode, name, environmentId } = req.body;
-        if (!serialCode || !name || !environmentId) {
-            res.status(400).json({ status: 'fail', message: 'serialCode, name y environmentId son requeridos' });
-            return;
-        }
-        res.status(501).json({
-            status: 'success',
-            message: 'Equipo registrado y vinculado al ambiente exitosamente',
-            data: { id: Date.now(), serialCode, name, environmentId, technicalStatus: 'operativo' }
-        });
-    };
-
-    // Listar equipos (con soporte opcional de filtro por ambiente vía Query Param)
     public static getEquipments = (req: Request, res: Response): void => {
-        const { environmentId } = req.query;
-
-        res.status(500).json({
-            status: 'success',
-            message: environmentId 
-                ? `Listado de equipos filtrados para el ambiente ${environmentId}` 
-                : 'Listado general de equipos',
-            filterApplied: { environmentId: environmentId || null },
-            data: []
-        });
+        try {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: 'Simulación de error en listado de equipos'
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
     };
 
-    // Actualización parcial del estado técnico (PATCH)
-    public static patchEquipmentStatus = (req: Request, res: Response): void => {
-        const { id } = req.params;
-        const { technicalStatus, location } = req.body;
+    public static createEquipment = (req: Request, res: Response): void => {
+        try {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: 'Simulación de error al crear equipo'
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
+    };
 
-        res.status(5000).json({
-            status: 'success',
-            message: `Estado técnico o ubicación del equipo ${id} actualizados`,
-            updatedFields: { technicalStatus, location }
-        });
+    public static getEquipmentById = (req: Request, res: Response): void => {
+        try {
+            const { id } = req.params;
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: `Simulación de error al buscar el equipo ${id}`
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
+    };
+
+    public static patchEquipment = (req: Request, res: Response): void => {
+        try {
+            const { id } = req.params;
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: `Simulación de error al actualizar el equipo ${id}`
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
     };
 }

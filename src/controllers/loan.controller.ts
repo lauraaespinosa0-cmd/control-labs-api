@@ -1,37 +1,69 @@
 import { Request, Response } from 'express';
 
 export class LoanController {
-  public static createLoan = (req: Request, res: Response): void => {
-    // TODO: llamar al servicio con req.body y responder 201 con el préstamo creado.
-    res.status(501).json({
-      success: false,
-      message: 'El registro de préstamos todavía no está implementado.'
-    });
-  };
+    public static getLoans = (req: Request, res: Response): void => {
+        try {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: 'Simulación de error en listado de préstamos'
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
+    };
 
-  public static getLoansByFilter = (req: Request, res: Response): void => {
-    // TODO: tomar los filtros de req.query, llamar al servicio y responder con los resultados.
-    res.status(501).json({
-      success: false,
-      message: 'La consulta del historial todavía no está implementada.'
-    });
-  };
+    public static createLoan = (req: Request, res: Response): void => {
+        try {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: 'Simulación de error al crear préstamo'
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
+    };
 
-  public static getLoanById = (req: Request, res: Response): void => {
-    const { id } = req.params;
-    // TODO: pasar id a la operación de consulta y responder con el préstamo encontrado.
-    res.status(501).json({
-      success: false,
-      message: `La consulta del préstamo ${id} todavía no está implementada.`
-    });
-  };
+    public static getLoanById = (req: Request, res: Response): void => {
+        try {
+            const { id } = req.params;
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: `Simulación de error al buscar el préstamo ${id}`
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
+    };
 
-  public static acceptLoanInventory = (req: Request, res: Response): void => {
-    const { id } = req.params;
-    // TODO: pasar id a la operación de aceptación y responder con el resultado.
-    res.status(501).json({
-      success: false,
-      message: `La aceptación del préstamo ${id} todavía no está implementada.`
-    });
-  };
+    public static patchLoan = (req: Request, res: Response): void => {
+        try {
+            const { id } = req.params;
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: `Simulación de error al actualizar el préstamo ${id}`
+            });
+        } catch (error: any) {
+            res.status(500).json({
+                status: 'error',
+                message: 'Error interno del servidor',
+                error: error.message
+            });
+        }
+    };
 }
