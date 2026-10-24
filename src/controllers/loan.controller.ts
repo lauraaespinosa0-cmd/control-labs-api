@@ -34,3 +34,4 @@ export class LoanController {
       message: `La aceptación del préstamo ${id} todavía no está implementada.`
     });
   };
+}
