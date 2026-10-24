@@ -7,5 +7,6 @@ router.post('/', LoanController.createLoan);
 router.get('/search', LoanController.getLoansByFilter);
 router.get('/:id', LoanController.getLoanById);
 router.put('/:id/accept', LoanController.acceptLoanInventory);
+LoanController.getLoansByFilter;
 
 export default router;
