@@ -1,8 +1,7 @@
-import { Request, Response } from 'express';
+import type { Request, Response } from 'express';
 
 export class FeatureController {
   public static createFeature = (req: Request, res: Response): void => {
-    // TODO: llamar al servicio con req.body y responder 201 con el préstamo creado.
     res.status(501).json({
       success: false,
       message: 'El registro de características todavía no está implementado.'
@@ -10,7 +9,6 @@ export class FeatureController {
   };
 
   public static getFeaturesByFilter = (req: Request, res: Response): void => {
-    // TODO: tomar los filtros de req.query, llamar al servicio y responder con los resultados.
     res.status(501).json({
       success: false,
       message: 'La consulta de características todavía no está implementada.'
@@ -19,11 +17,9 @@ export class FeatureController {
 
   public static updateFeature = (req: Request, res: Response): void => {
     const { id } = req.params;
-    // TODO: pasar id a la operación de actualización y responder con el resultado.
     res.status(501).json({
       success: false,
       message: `La actualización de la característica ${id} todavía no está implementada.`
     });
   };
-
 }

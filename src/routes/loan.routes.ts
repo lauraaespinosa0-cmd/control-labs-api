@@ -3,10 +3,10 @@ import { LoanController } from '../controllers/loan.controller';
 
 const router = Router();
 
-router.post('/', LoanController.createLoan);
+// Primero los paths estáticos (/search) y luego los dinámicos (/:id)
 router.get('/search', LoanController.getLoansByFilter);
-router.get('/:id', LoanController.getLoanById);
+router.post('/', LoanController.createLoan);
 router.put('/:id/accept', LoanController.acceptLoanInventory);
-LoanController.getLoansByFilter;
+router.get('/:id', LoanController.getLoanById);
 
 export default router;

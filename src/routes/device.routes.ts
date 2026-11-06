@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { DeviceController } from '../controllers/device.controller';
+import { DeviceController } from '../controllers/device.controller.ts';
 
 const router = Router();
 
