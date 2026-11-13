@@ -1,14 +1,15 @@
 import express, { Request, Response } from 'express';
+import apiRoutes from './Routes';
 import cors from 'cors';
-import apiRoutes from './routes'; 
 import { requestLogger } from './middlewares/logger.middleware';
-import { globalErrorHandler } from './middlewares/errorHandler.middleware' ;
+import { globalErrorHandler } from './middlewares/errorHandler.middleware';
 
 const app = express();
 
 app.use(cors());
 app.use(requestLogger);
 app.use(express.json());
+
 
 // Health Check Endpoint
 app.get('/api/v1/health', (req: Request, res: Response) => {
@@ -19,14 +20,14 @@ app.get('/api/v1/health', (req: Request, res: Response) => {
   });
 });
 
-// Todas las rutas de la API se montan bajo /api/v1
-app.use('/api/v1', apiRoutes); 
+
+
+app.use('/api/v1', apiRoutes);
 
 app.use((_req, res) => {
   res.status(404).json({ success: false, error: 'Ruta no encontrada.' });
 });
 
-
-app.use(globalErrorHandler); 
+app.use(globalErrorHandler);
 
 export default app;

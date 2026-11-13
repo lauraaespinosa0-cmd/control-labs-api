@@ -1,12 +1,15 @@
-mport { Router } from 'express';
+import { Router } from 'express';
 import loanRoutes from './loan.routes';
-import userRoutes from './user.routes';
-import environmentRoutes from './environment.routes';
+import userRouters from './user.routes';
+import environmentRouters from './environment.routes'; 
+import computerRoutes from './computer.routes'
 
 const router = Router();
-
 router.use('/loans', loanRoutes);
-router.use('/users', userRoutes);
-router.use('/environments', environmentRoutes);
+router.use('/users', userRouters);
+router.use('/enviroments', environmentRouters)
+router.use('/computers', computerRoutes)
+
+
 
 export default router;
